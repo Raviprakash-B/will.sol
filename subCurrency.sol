@@ -27,11 +27,11 @@ contract Coin{
     error inSufficientBalance(uint requested, uint available); //amount requested and amount available
     function send(address reciever,uint amount) public{
         //require to be amount is greater than x
-        
+
         if(amount > balances[msg.sender]) //balances of sender
         revert inSufficientBalance({            //it stops this transaction from happening and provide the information regarding transaction
         requested : amount,
-        available: balances[msg.sender]
+        available : balances[msg.sender]
         });
         balances[msg.sender] -= amount; //updating balance person who is sending
         balances[reciever] += amount; //reciever acc
